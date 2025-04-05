@@ -1,0 +1,135 @@
+body {
+  background-color: #f9f9fa;
+}
+
+.padding {
+  padding: 3rem !important;
+}
+
+.user-card-full {
+  overflow: hidden;
+}
+
+.user-card-full .card {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  border: none;
+  margin-bottom: 30px;
+}
+
+.user-card-full .m-r-0 {
+  margin-right: 0px;
+}
+
+.user-card-full .m-l-0 {
+  margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+  border-radius: 5px 0 0 5px;
+}
+
+.user-card-full .bg-c-lite-green {
+  background: linear-gradient(to right, #582eff, #0d6efd);
+}
+
+.user-card-full .user-profile {
+  padding: 20px 0;
+}
+
+.user-card-full .card-block {
+  padding: 1.25rem;
+}
+
+.user-card-full .m-b-25 {
+  margin-bottom: 25px;
+}
+
+.user-card-full .img-radius {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.user-card-full h6 {
+  font-size: 14px;
+}
+
+.user-card-full .card .card-block p {
+  line-height: 25px;
+}
+
+@media only screen and (min-width: 1400px) {
+  .user-card-full p {
+    font-size: 14px;
+  }
+}
+
+.user-card-full .card-block {
+  padding: 1.25rem;
+}
+
+.user-card-full .b-b-default {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.user-card-full .m-b-20 {
+  margin-bottom: 20px;
+}
+
+.user-card-full .p-b-5 {
+  padding-bottom: 5px !important;
+}
+
+.user-card-full .card .card-block p {
+  line-height: 25px;
+}
+
+.user-card-full.m-b-10 {
+  margin-bottom: 10px;
+}
+
+.user-card-full .text-muted {
+  color: #919aa3 !important;
+}
+
+.user-card-full.b-b-default {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.user-card-full .f-w-600 {
+  font-weight: 600;
+}
+
+.user-card-full .m-b-20 {
+  margin-bottom: 20px;
+}
+
+.user-card-full .m-t-40 {
+  margin-top: 20px;
+}
+
+.user-card-full .p-b-5 {
+  padding-bottom: 5px !important;
+}
+
+.user-card-full .m-b-10 {
+  margin-bottom: 10px;
+}
+
+.user-card-full .m-t-40 {
+  margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+  display: inline-block;
+}
+
+.user-card-full .social-link li a {
+  font-size: 20px;
+  margin: 0 10px 0 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}

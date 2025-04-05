@@ -1,0 +1,61 @@
+.cancel-info, .buy-info, .open-info {
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.cart-header {
+    margin-bottom: 20px;
+}
+
+.cancel-info {
+    color: #dc3545;
+}
+
+.buy-info {
+    color: #198754;
+}
+
+.open-info {
+    color: #0d6efd;
+}
+
+.summary-price {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.summary-price b {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.buy-cancel-btns {
+    margin-top: 20px;
+}
+
+    .buy-cancel-btns .btn-success {
+        margin-left: 10px;
+    }
+
+    .buy-cancel-btns button {
+        font-size: 18px;
+    }
+
+    .editable-qnt {
+        cursor: pointer;
+        border: 1px solid gray;
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 6px 16px;
+        font-weight: 600;
+    }
+    
+    a {
+        text-decoration: none;
+        color: currentColor
+    }

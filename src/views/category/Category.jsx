@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import './CategoryProducts.css';
-import { AppContext } from "./App";
+import { AppContext } from "../../App";
 
 function Category(){
   const {request} = useContext(AppContext);
@@ -40,6 +40,25 @@ function Category(){
   }
 
   function ProductCard({product}){
+    const {request, token, setToken} = useContext(AppContext);
+
+    const addToCartClick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if(!token){
+        alert("Авторизуйтесь для створення кошика.");
+      }
+      else{
+        request("/api/cart?productId=" + product.id, {method: "POST"})
+          .then(console.log)
+          .catch(j => {
+            console.log(j);
+            if(j.status.code === 401){
+              setToken(null);
+            }
+          });
+      }
+    }
     return <>
       <div className="col">
 
@@ -48,7 +67,7 @@ function Category(){
           <img src={product.imagesCsv.split(',')[0]} className="card-img-top product-img" alt=""/>
         </Link>
         <div className="card-body">
-          <div data-cart-product="@Model.Id" className="card-fab"><i className="bi bi-bag-plus"></i></div>
+          <div onClick={addToCartClick} className="card-fab"><i className="bi bi-bag-plus"></i></div>
           <h5 className="card-title">{product.name}</h5>
           <p className="card-text">{product.description}</p>
         </div>

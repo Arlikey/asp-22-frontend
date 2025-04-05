@@ -1,9 +1,13 @@
 import { Link, Outlet } from "react-router-dom";
 import './Layout.css';
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AppContext } from "./App";
 
 export default function Layout(){
+    const { token, setToken } = useContext(AppContext);
+
+    const userName = token ? JSON.parse(atob(token.split('.')[1])).Name : null;
+
     return <>
         <div className="page-container">
             <header>
@@ -24,11 +28,19 @@ export default function Layout(){
                             </li>
                         </ul>
                         <div className="user-block">
-
+                            {!token && <>
                                 <button type="button" className="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#authModal">
                                     <i className="bi bi-box-arrow-in-right"></i>
                                 </button>
                                 <Link to='/' className="btn btn-outline-dark"><i className="bi bi-person-plus"></i></Link>
+                            </>}
+                            {!!token && <>
+                                <Link to='/profile' className="btn btn-outline-dark"><i className="bi bi-person-circle"></i> {userName}</Link>
+                                <Link to='/cart' className="btn btn-outline-primary"><i className="bi bi-bag-fill"></i></Link>
+                                <button className="btn btn-outline-danger logout" onClick={() => setToken('')}>
+                                    <i className="bi bi-box-arrow-right"></i>
+                                </button>
+                            </>}
                         </div>
                     </div>
                 </div>
@@ -52,11 +64,12 @@ export default function Layout(){
     </>;
 
 function AuthModal(){
-    const { request } = useContext(AppContext);
+    const { request, setToken } = useContext(AppContext);
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({ login: "", password: "" });
+    const closeButtonRef = useRef();
 
     const validate = (e) => {
         const { name, value } = e.target;
@@ -87,7 +100,15 @@ function AuthModal(){
             headers: {
                 'Authorization': 'Basic ' + credentials
             }
-        }).then(console.log).catch(console.error);
+        }).then(data => {
+            let [header, payload] = data.split('.');
+            payload = atob(payload);
+            let expires = JSON.parse(payload).Exp;
+            console.log(expires);
+            window.localStorage.setItem('tokenp22', data);
+            setToken(data);
+            closeButtonRef.current.click();
+        }).catch(console.error);
     };
 
     return (
@@ -128,7 +149,7 @@ function AuthModal(){
                     </div>
                     <div className="modal-footer">
                         <div id="auth-error" className="text-danger me-auto"></div>
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                        <button type="button" ref={closeButtonRef} className="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
                         <button type="button" className={`btn ${isValid ? "btn-primary" : "btn-secondary-outline"}`} onClick={authenticateClick} disabled={!isValid}>Вхід</button>
                     </div>
                 </div>
